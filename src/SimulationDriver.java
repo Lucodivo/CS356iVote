@@ -1,64 +1,75 @@
-import java.util.HashSet;
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by Connor on 10/8/2016.
  */
 public class SimulationDriver {
+    private static int NUM_STUDENTS = 3;
+    private static int NUM_CANDIDATE_ANSWERS = 6;
+    private static int ANSWER_PERCENTAGE = 40;
+    private static Random rand;
 
     public static void main(String args[]){
-        String qString = new String("Wut?");
-        Vector<String> candidateAnswers = new Vector<>();
-        candidateAnswers.add("A.");
-        candidateAnswers.add("B.");
-        candidateAnswers.add("C.");
-        candidateAnswers.add("D.");
-        candidateAnswers.add("E.");
-        Question question = new Question(qString, candidateAnswers, true);
+        rand = new Random();
 
-        IVoteService iVoteService = new IVoteService(question);
+        String questionString = new String("Wut?");
+        ArrayList<String> candidateAnswers = new ArrayList<>();
+        for(int i = 0; i < NUM_CANDIDATE_ANSWERS; i++){
+            candidateAnswers.add(Character.toString((char)(i + 65)));
+        }
+        Question multAnsQuestion = new MultAnsQuestion(questionString, candidateAnswers);
 
-        String studentID = new String("12345");
-        HashSet<String> studentAnswers = new HashSet<>();
-        studentAnswers.add("A.");
-        studentAnswers.add("C.");
-        studentAnswers.add("E.");
-        Student student = new Student(studentID, studentAnswers);
+        IVoteService iVoteService1 = new IVoteService(multAnsQuestion);
 
-        if(iVoteService.submitStudentVote(student)){
-            System.out.println("Submission successful");
-        } else {
-            System.out.println("Submission failed");
+        ArrayList<Student> students1 = getMultRandStudents(multAnsQuestion);
+
+        System.out.println("------- Multiple Answer Question Test -------");
+        for(int i = 0; i < NUM_STUDENTS; i++){
+            System.out.println("Submitting Student " + students1.get(i).getStudentID() + ":");
+            iVoteService1.submitStudentVote(students1.get(i));
+            iVoteService1.printVotes();
         }
 
-        iVoteService.printVotes();
+        System.out.println();
 
-        studentAnswers.clear();
-        studentAnswers.add("C.");
-        studentAnswers.add("D.");
-        studentAnswers.add("E.");
+        /*
+        Initializing a SingAnsQuestion using the exact same
+         */
+        Question singAnsQuestion = new SingAnsQuestion(questionString, candidateAnswers);
 
-        if(iVoteService.submitStudentVote(student)){
-            System.out.println("Submission successful");
-        } else {
-            System.out.println("Submission failed");
+        IVoteService iVoteService2 = new IVoteService(singAnsQuestion);
+
+        ArrayList<Student> students2 = getMultRandStudents(singAnsQuestion);
+
+        System.out.println("------- Single Answer Question Test -------");
+        for(int i = 0; i < NUM_STUDENTS; i++){
+            System.out.println("Submitting Student " + students2.get(i).getStudentID() + ":");
+            iVoteService2.submitStudentVote(students2.get(i));
+            iVoteService2.printVotes();
         }
-
-        iVoteService.printVotes();
-
-        String studentID2 = new String("67890");
-        HashSet<String> studentAnswers2 = new HashSet<>();
-        studentAnswers2.add("A.");
-        studentAnswers2.add("B.");
-        studentAnswers2.add("C.");
-        Student student2 = new Student(studentID2, studentAnswers2);
-
-        if(iVoteService.submitStudentVote(student2)){
-            System.out.println("Submission successful");
-        } else {
-            System.out.println("Submission failed");
-        }
-
-        iVoteService.printVotes();
     }
+
+    private static ArrayList<Student> getMultRandStudents(Question question){
+        ArrayList<Student> students = new ArrayList<Student>();
+
+        for(int i = 0; i < NUM_STUDENTS; i++){
+            String iStudentID = Integer.toString(i);
+            Answer iStudentAnswers = question.createAnswer();
+
+            for(int j = 0; j < NUM_CANDIDATE_ANSWERS; j++){
+                if(rand.nextInt(100) < ANSWER_PERCENTAGE){
+                    iStudentAnswers.put(question.getCandidateAnswers().get(j));
+                }
+            }
+            if(iStudentAnswers.isEmpty()){
+                iStudentAnswers.put(question.getCandidateAnswers().get(rand.nextInt(NUM_CANDIDATE_ANSWERS)));
+            }
+            students.add(new Student(iStudentID, iStudentAnswers));
+        }
+
+        return students;
+    }
+
+
 }

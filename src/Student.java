@@ -6,22 +6,22 @@ import java.util.Vector;
  */
 public class Student {
     private String studentID;
-    private HashSet<String> answers;
+    private Answer answer;
 
-    public Student (String studentID, HashSet<String> answers) {
+    public Student (String studentID, Answer answers) {
         this.studentID = studentID;
-        this.answers = answers;
+        this.answer = answers;
     }
 
     public String getStudentID() {
         return studentID;
     }
 
-    public HashSet<String> getAnswers() {
-        return answers;
+    public Answer getAnswer() {
+        return answer;
     }
 
-    public void setAnswers(HashSet<String> answers) {
-        this.answers = answers;
+    public void setAnswers(Answer answers) {
+        this.answer = answers;
     }
 }
