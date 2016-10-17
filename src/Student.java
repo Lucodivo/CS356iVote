@@ -2,25 +2,42 @@ import java.util.HashSet;
 import java.util.Vector;
 
 /**
- * Created by Connor on 10/8/2016.
+ * @author Connor
  */
 public class Student {
     private String studentID;
     private Answer answer;
 
+    /**
+     *
+     * @param studentID
+     * @param answers
+     */
     public Student (String studentID, Answer answers) {
         this.studentID = studentID;
         this.answer = answers;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getStudentID() {
         return studentID;
     }
 
+    /**
+     *
+     * @return
+     */
     public Answer getAnswer() {
         return answer;
     }
 
+    /**
+     *
+     * @param answers
+     */
     public void setAnswers(Answer answers) {
         this.answer = answers;
     }

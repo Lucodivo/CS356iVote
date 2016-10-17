@@ -2,26 +2,45 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Created by Connor on 10/16/2016.
+ * @author Connor
  */
 public class SingAnsQuestion extends Question {
-    private HashMap<String,SingAnswer> userVotes;
+    private HashMap<String, SingleAnswer> userVotes;
 
+    /**
+     *
+     * @param questionString
+     * @param candidateAnswers
+     */
     public SingAnsQuestion(String questionString, ArrayList<String> candidateAnswers) {
         super(questionString, candidateAnswers);
-        userVotes = new HashMap<String,SingAnswer>();
+        userVotes = new HashMap<String, SingleAnswer>();
     }
 
+    /**
+     *
+     * @return
+     */
     public Answer createAnswer(){
-        return new SingAnswer();
+        return new SingleAnswer();
     }
 
+    /**
+     *
+     * @param userID
+     * @param answer
+     */
     @Override
     public void submitVote(String userID, Answer answer) {
         adjustVoteCount(userID, answer);
-        userVotes.put(userID, new SingAnswer((SingAnswer)answer));
+        userVotes.put(userID, new SingleAnswer((SingleAnswer)answer));
     }
 
+    /**
+     *
+     * @param userID
+     * @param answers
+     */
     @Override
     public void adjustVoteCount(String userID, Answer answers) {
         String oldVote = null;
@@ -31,7 +50,7 @@ public class SingAnsQuestion extends Question {
         if(oldVoteExist){
             oldVote = userVotes.get(userID).getAnswer();
         }
-        newVote = ((SingAnswer)answers).getAnswer();
+        newVote = ((SingleAnswer)answers).getAnswer();
 
         for(int i = 0; i < this.candidateAnswers.size(); i++){
             String currentCandAns = this.candidateAnswers.get(i);
@@ -45,28 +64,6 @@ public class SingAnsQuestion extends Question {
     }
 }
 
-class SingAnswer implements Answer {
-    private String answer;
-
-    public SingAnswer() {
-        answer = new String();
-    }
-
-    public SingAnswer(SingAnswer a) {
-        this.answer = a.answer;
-    }
-
-    public String getAnswer(){
-        return this.answer;
-    }
-
-    @Override
-    public void put(String answer) {
-        this.answer = answer;
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return answer.isEmpty();
-    }
-}
+/**
+ *
+ */

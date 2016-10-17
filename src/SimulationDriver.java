@@ -2,14 +2,18 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * Created by Connor on 10/8/2016.
+ * @author Connor
  */
 public class SimulationDriver {
     private static int NUM_STUDENTS = 3;
     private static int NUM_CANDIDATE_ANSWERS = 6;
-    private static int ANSWER_PERCENTAGE = 40;
+    private static int ANSWER_PERCENTAGE = 33;
     private static Random rand;
 
+    /**
+     *
+     * @param args
+     */
     public static void main(String args[]){
         rand = new Random();
 
@@ -50,6 +54,11 @@ public class SimulationDriver {
         }
     }
 
+    /**
+     *
+     * @param question
+     * @return
+     */
     private static ArrayList<Student> getMultRandStudents(Question question){
         ArrayList<Student> students = new ArrayList<Student>();
 

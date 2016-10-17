@@ -1,9 +1,20 @@
 import java.util.HashSet;
 
 /**
- * Created by Connor on 10/15/2016.
+ * @author Connor
  */
 public interface VoteService {
+
+    /**
+     *
+     * @param userID
+     * @param answer
+     */
     public void submitVote(String userID, Answer answer);
+
+    /**
+     *
+     */
     public void printVotes();
+
 }
