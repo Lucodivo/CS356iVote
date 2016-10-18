@@ -1,7 +1,9 @@
+package QueastionsAndAnswers;
+
 import java.util.HashSet;
 
 /**
- * A class that uses the Answer interface to develop an Answer form
+ * A class that uses the QueastionsAndAnswers.Answer interface to develop an QueastionsAndAnswers.Answer form
  * for questions that allow multiple answers
  *
  * @author Connor
@@ -16,7 +18,7 @@ public class MultipleAnswer implements Answer, Cloneable{
      * Constructor
      * initializes an empty HashSet of answers
      */
-    public MultipleAnswer(){
+    protected MultipleAnswer(){
         this.answers = new HashSet<String>();
     }
 
@@ -61,7 +63,7 @@ public class MultipleAnswer implements Answer, Cloneable{
     /**
      * A function that will clone the current answer
      *
-     * @return a new MultipleAnswer object with same data values (unique reference)
+     * @return a new QueastionsAndAnswers.MultipleAnswer object with same data values (unique reference)
      */
     public MultipleAnswer clone() {
         // try to return a cloned version of the current object
@@ -69,7 +71,7 @@ public class MultipleAnswer implements Answer, Cloneable{
             return (MultipleAnswer) super.clone();
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
-            System.out.print("Can't clone MultipleAnswer");
+            System.out.print("Can't clone QueastionsAndAnswers.MultipleAnswer");
             return this;
         }
     }

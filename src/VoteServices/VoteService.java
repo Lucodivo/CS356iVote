@@ -1,5 +1,9 @@
+package VoteServices;
+
+import QueastionsAndAnswers.Answer;
+
 /**
- * VoteService interface that allows for users to submit and print votes
+ * VoteServices.VoteService interface that allows for users to submit and print votes
  *
  * @author Connor
  */

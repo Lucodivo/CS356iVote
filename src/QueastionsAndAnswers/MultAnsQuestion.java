@@ -1,9 +1,11 @@
+package QueastionsAndAnswers;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
 /**
- * MultAnsQuestion is a Question that uses the MultipleAnswer
+ * QueastionsAndAnswers.MultAnsQuestion is a QueastionsAndAnswers.Question that uses the QueastionsAndAnswers.MultipleAnswer
  * class to accept user answers. This means that the question allows
  * users to have multiple answers for the same question.
  *
@@ -30,9 +32,9 @@ public class MultAnsQuestion extends Question {
     }
 
     /**
-     * Factory method to obtain a MultipleAnswer object
+     * Factory method to obtain a QueastionsAndAnswers.MultipleAnswer object
      *
-     * @return a new MultipleAnswer object
+     * @return a new QueastionsAndAnswers.MultipleAnswer object
      */
     public Answer createAnswer(){
         return (new MultipleAnswer());
@@ -43,13 +45,13 @@ public class MultAnsQuestion extends Question {
      * Will update old answer with new answer.
      *
      * @param userID a users ID to be used as key in HashMap
-     * @param answers a users Answer to be used as value in HashMap
+     * @param answers a users QueastionsAndAnswers.Answer to be used as value in HashMap
      */
     @Override
     public void submitVote(String userID, Answer answers) {
         // adjust the vote count while we still have access to old votes
         adjustVoteCount(userID, answers);
-        // update the user's Answer
+        // update the user's QueastionsAndAnswers.Answer
         this.userVotes.put(userID, ((MultipleAnswer)answers).clone());
     }
 
@@ -58,7 +60,7 @@ public class MultAnsQuestion extends Question {
      * and old answer objects
      *
      * @param userID a users ID to be used as key in HashMap
-     * @param answers a users Answer to be used as value in HashMap
+     * @param answers a users QueastionsAndAnswers.Answer to be used as value in HashMap
      */
     protected void adjustVoteCount(String userID, Answer answers) {
 

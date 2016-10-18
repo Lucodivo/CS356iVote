@@ -1,5 +1,7 @@
+package QueastionsAndAnswers;
+
 /**
- * Interface for Answer classes
+ * Interface for QueastionsAndAnswers.Answer classes
  * Main objective is to hold String(s) that represent user's answers
  *
  * @author Connor

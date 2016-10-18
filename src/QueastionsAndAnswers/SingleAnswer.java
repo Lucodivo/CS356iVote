@@ -1,5 +1,7 @@
+package QueastionsAndAnswers;
+
 /**
- * A class that uses the Answer interface to develop an Answer form
+ * A class that uses the QueastionsAndAnswers.Answer interface to develop an QueastionsAndAnswers.Answer form
  * for question that only allow one answer.
  *
  * @author Connor
@@ -12,16 +14,16 @@ public class SingleAnswer implements Answer {
 
     /**
      * Empty Constructor
-     * returns a new SingleAnswer w/ empty String
+     * returns a new QueastionsAndAnswers.SingleAnswer w/ empty String
      */
-    public SingleAnswer() {
+    protected SingleAnswer() {
         //initialize answer variable to avoid null pointer exception
         answer = new String();
     }
 
     /**
      * Copy Constructor
-     * returns a new clone of the SingleAnswer argument
+     * returns a new clone of the QueastionsAndAnswers.SingleAnswer argument
      *
      * @param sA the object to be cloned
      */

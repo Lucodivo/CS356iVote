@@ -1,8 +1,10 @@
+package QueastionsAndAnswers;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * SingAnsQuestion is a Question that uses the SingleAnswer
+ * QueastionsAndAnswers.SingAnsQuestion is a QueastionsAndAnswers.Question that uses the QueastionsAndAnswers.SingleAnswer
  * class to accept a users' answers. This means that the question allows
  * users to only have one answer for the same question.
  *
@@ -29,9 +31,9 @@ public class SingAnsQuestion extends Question {
     }
 
     /**
-     * Factory method to obtain a SingleAnswer object
+     * Factory method to obtain a QueastionsAndAnswers.SingleAnswer object
      *
-     * @return a new SingleAnswer object
+     * @return a new QueastionsAndAnswers.SingleAnswer object
      */
     public Answer createAnswer(){
         return new SingleAnswer();
@@ -42,7 +44,7 @@ public class SingAnsQuestion extends Question {
      * Will update old answer with new answer.
      *
      * @param userID a users ID to be used as key in HashMap
-     * @param answer a users Answer to be used as value in HashMap
+     * @param answer a users QueastionsAndAnswers.Answer to be used as value in HashMap
      */
     @Override
     public void submitVote(String userID, Answer answer) {
@@ -55,7 +57,7 @@ public class SingAnsQuestion extends Question {
      * and old answer objects
      *
      * @param userID a users ID to be used as key in HashMap
-     * @param answers a users Answer to be used as value in HashMap
+     * @param answers a users QueastionsAndAnswers.Answer to be used as value in HashMap
      */
     @Override
     protected void adjustVoteCount(String userID, Answer answers) {

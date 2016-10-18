@@ -1,6 +1,10 @@
+package VoteServices;
+
+import QueastionsAndAnswers.Answer;
+
 /**
  * A class that represents a student as a String representing some identification
- * and an Answer they have chosen for a specific question.
+ * and an QueastionsAndAnswers.Answer they have chosen for a specific question.
  *
  * @author Connor
  */

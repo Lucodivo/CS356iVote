@@ -1,7 +1,9 @@
+package QueastionsAndAnswers;
+
 import java.util.ArrayList;
 
 /**
- * Abstract Question class that sets a framework to hold a question string, candidate answer
+ * Abstract QueastionsAndAnswers.Question class that sets a framework to hold a question string, candidate answer
  * strings and integers representing vote counts.
  *
  * @author Connor
@@ -22,7 +24,7 @@ public abstract class Question {
 
     /**
      * Constructor
-     * Creates a Question object with specified question and potential answers.
+     * Creates a QueastionsAndAnswers.Question object with specified question and potential answers.
      *
      * @param questionString question to be asked
      * @param candidateAnswers potential answers
@@ -66,7 +68,7 @@ public abstract class Question {
 
     /**
      * Abstract Method
-     * Submits a vote to the Question object
+     * Submits a vote to the QueastionsAndAnswers.Question object
      *
      * @param userID key to use when storing answer
      * @param answer value to use when storing answer
@@ -75,10 +77,10 @@ public abstract class Question {
 
     /**
      * Abstract Method
-     * Factory method to ensure that each Question will return a new
-     * object that uses the Answer interface.
+     * Factory method to ensure that each QueastionsAndAnswers.Question will return a new
+     * object that uses the QueastionsAndAnswers.Answer interface.
      *
-     * @return a new object that uses the Answer interface
+     * @return a new object that uses the QueastionsAndAnswers.Answer interface
      */
     abstract public Answer createAnswer();
 

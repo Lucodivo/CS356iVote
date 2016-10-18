@@ -1,3 +1,7 @@
+import QueastionsAndAnswers.*;
+import VoteServices.IVoteService;
+import VoteServices.Student;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -20,7 +24,7 @@ public class SimulationDriver {
     /**
      * the percentage that a student will choose any specified answer
      */
-    private static int ANSWER_PERCENTAGE = 33;
+    private static int ANSWER_PERCENTAGE = 30;
     /**
      * used to allow students to choose random answers
      */
@@ -44,19 +48,19 @@ public class SimulationDriver {
             candidateAnswers.add(Character.toString((char)(i + 65)));
         }
 
-        // use the question string and candidateAnswers to create a MultAnsQuestion
+        // use the question string and candidateAnswers to create a QueastionsAndAnswers.MultAnsQuestion
         Question multAnsQuestion = new MultAnsQuestion(questionString, candidateAnswers);
 
-        // create an IVoteService that uses that MultAnsQuestion
+        // create an VoteServices.IVoteService that uses that QueastionsAndAnswers.MultAnsQuestion
         IVoteService iVoteService1 = new IVoteService(multAnsQuestion);
 
         // get random students for multAnsQuestion
         ArrayList<Student> students1 = getMultRandStudents(multAnsQuestion);
 
         // submit each student to the multAnsQuestion and print results
-        System.out.println("------- Multiple Answer Question Test -------");
+        System.out.println("------- Multiple QueastionsAndAnswers.Answer QueastionsAndAnswers.Question Test -------");
         for(int i = 0; i < NUM_STUDENTS; i++){
-            System.out.println("Submitting Student " + students1.get(i).getStudentID() + ":");
+            System.out.println("Submitting VoteServices.Student " + students1.get(i).getStudentID() + ":");
             iVoteService1.submitStudentVote(students1.get(i));
             iVoteService1.printVotes();
         }
@@ -64,32 +68,32 @@ public class SimulationDriver {
         // create a line separation for better separation of tests
         System.out.println();
 
-        // use the same question string and candidateAnswers to create a SingAnsQuestion
+        // use the same question string and candidateAnswers to create a QueastionsAndAnswers.SingAnsQuestion
         Question singAnsQuestion = new SingAnsQuestion(questionString, candidateAnswers);
 
-        // create an IVoteService that uses that SingAnsQuestion
+        // create an VoteServices.IVoteService that uses that QueastionsAndAnswers.SingAnsQuestion
         IVoteService iVoteService2 = new IVoteService(singAnsQuestion);
 
         // get random students for singAnsQuestion
         ArrayList<Student> students2 = getMultRandStudents(singAnsQuestion);
 
         // submit each student to the singAnsQuestion and print results
-        System.out.println("------- Single Answer Question Test -------");
+        System.out.println("------- Single QueastionsAndAnswers.Answer QueastionsAndAnswers.Question Test -------");
         for(int i = 0; i < NUM_STUDENTS; i++){
-            System.out.println("Submitting Student " + students2.get(i).getStudentID() + ":");
+            System.out.println("Submitting VoteServices.Student " + students2.get(i).getStudentID() + ":");
             iVoteService2.submitStudentVote(students2.get(i));
             iVoteService2.printVotes();
         }
     }
 
     /**
-     * A function that takes a Question and returns NUM_STUDENTS amount of students with
-     * random answers corresponding to the Question argument
+     * A function that takes a QueastionsAndAnswers.Question and returns NUM_STUDENTS amount of students with
+     * random answers corresponding to the QueastionsAndAnswers.Question argument
      * [!!!IMPORTANT!!! The way this function is written uses polymorphism, but is imperfectly
-     * random when it comes to SingleAnswer questions. It will favor later questions. (ex: F has a greater
+     * random when it comes to QueastionsAndAnswers.SingleAnswer questions. It will favor later questions. (ex: F has a greater
      * likelihood than A)]
      *
-     * @param question the Question in which the students will have answers for
+     * @param question the QueastionsAndAnswers.Question in which the students will have answers for
      * @return students with randomly generated answers
      */
     private static ArrayList<Student> getMultRandStudents(Question question){
